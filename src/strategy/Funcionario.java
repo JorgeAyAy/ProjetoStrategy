@@ -2,16 +2,25 @@ package strategy;
 
 public abstract class Funcionario {
 	
-	protected String nome; //Se quisermos acessar os atributos do pai, não queremos que ele seja public, então deixamos protected
-	protected String cpf; //Só pode ser acessado pela própria classe ou por suas subclasses (filha)
-	protected double salario;
-	
+	private String nome; //Se quisermos acessar os atributos do pai, não queremos que ele seja public, então deixamos protected
+	private String cpf; //Só pode ser acessado pela própria classe ou por suas subclasses (filha)
+	private double salario;
+	private int senha;
+		
 	public void setNome(String nome){
 		this.nome = nome;
 	}
 	
 	public String getNome(){
 		return this.nome;
+	}
+	
+	public void setCpf(String cpf){
+		this.cpf = cpf;
+	}
+	
+	public String getCpf(){
+		return this.cpf;
 	}
 	
 	public void setSalario(double salario){
@@ -24,6 +33,24 @@ public abstract class Funcionario {
 	
 	public double getBonificacao(){
 		return this.salario * 0.10;
+	}
+	
+	public void setSenha(int senha) {
+		this.senha = senha;
+	}
+	
+	public int getSenha(){
+		return this.senha;
+	}
+	
+	public boolean autentica(int senha) {
+		if(this.senha == senha){
+			System.out.println("Acesso permitido!");
+			return true;
+		}else{
+			System.out.println("Acesso negado!");
+			return false;
+		}
 	}
 	
 	
