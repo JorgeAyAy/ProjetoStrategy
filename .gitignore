@@ -1,6 +1,4 @@
 .gitignore
-*.class
-*.classpath
-*.project
-.metadata*
-.settings*
+.classpath
+.project
+.settings/
