@@ -1,7 +1,8 @@
 package strategy;
 
 public class Empresa {
-    
+	
+	   
     private Funcionario[] empregados;
 
     public Funcionario getFuncionario(int posicao) {

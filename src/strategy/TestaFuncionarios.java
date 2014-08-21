@@ -9,14 +9,17 @@ public class TestaFuncionarios {
 
 	private Gerente gerente;
 	private Diretor diretor;
-	private ControleDeBonificacoes cdb;
 	private Empresa empresa;
+	private Vendedor vendedor;
+	private ControleDeBonificacoes cdb;
+	
 
 	@Before
 	public void criaFuncionario() {
 		gerente = new Gerente();
 		diretor = new Diretor();
 		empresa = new Empresa();
+		vendedor = new Vendedor();
 		cdb = new ControleDeBonificacoes();
 	}
 
@@ -31,13 +34,14 @@ public class TestaFuncionarios {
 		cdb.registra(gerente);
 		double retornoEsperado = 2000;
 		double retornoFeito = cdb.getTotalDeBonificacoes();
+
 		assertEquals(0, Double.compare(retornoEsperado, retornoFeito));
 
 		cdb.registra(gerente); // segunda bonificação
 		double retornoEsperado2 = 4000;
 		double retornoFeito2 = cdb.getTotalDeBonificacoes();
+		
 		assertEquals(0, Double.compare(retornoEsperado2, retornoFeito2));
-
 		assertEquals(empresa.imprimeFuncionario(gerente), true);
 		
 		
@@ -56,9 +60,28 @@ public class TestaFuncionarios {
 		cdb.registra(diretor);
 		double retornoFeito = cdb.getTotalDeBonificacoes();
 		double retornoEsperado = 3500;
+		
 		assertEquals(0, Double.compare(retornoEsperado, retornoFeito));
-
 		assertEquals(empresa.imprimeFuncionario(diretor), true);
+	}
+	
+	@Test
+	public void criarVendedor(){
+		
+		vendedor.setNome("Enia Mendes");
+		vendedor.setCpf("1540.069.011-79");
+		vendedor.setSenha(00001);
+		vendedor.setSalario(1000);
+		vendedor.setDataEntrada("07-05-1987");
+		
+		cdb.registra(vendedor);
+		double retornoFeito = cdb.getTotalDeBonificacoes();
+		double retornoEsperado = 200;
+		
+		assertEquals(0, Double.compare(retornoEsperado, retornoFeito));
+		assertEquals(empresa.imprimeFuncionario(vendedor), true);
+		
+		
 	}
 
 	@Test
@@ -66,9 +89,11 @@ public class TestaFuncionarios {
 
 		diretor.setSenha(123456);
 		gerente.setSenha(543210);
+		vendedor.setSenha(000001);
 
 		assertEquals(diretor.autentica(123456), true);
 		assertEquals(gerente.autentica(5432101), false);
+		assertEquals(vendedor.autentica(000001), true);
 
 	}
 
