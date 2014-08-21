@@ -1,4 +1,6 @@
-.project
-.settings
-.classpath
-bin/
+.gitignore
+*.class
+*.classpath
+*.project
+.metadata*
+.settings*
