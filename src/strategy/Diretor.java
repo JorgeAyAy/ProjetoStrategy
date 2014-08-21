@@ -7,5 +7,9 @@ public class Diretor extends Funcionario{
 		return super.autentica(senha);
 	}
 	
+	public double getBonificacao(){
+		return super.getBonificacao() + 2000;
+	}
+	
 
 }

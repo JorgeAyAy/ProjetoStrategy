@@ -2,6 +2,8 @@ package strategy;
 
 public interface Autenticavel {
 	
-	boolean autentica(int senha); 
+	boolean autentica(int senha);
+	
+	double getBonificacao();
 
 }
